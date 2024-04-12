@@ -42,7 +42,17 @@ else()
     endif()
 endif()
 
-target_link_libraries(synfilesharingDemo PRIVATE Qt${QT_VERSION_MAJOR}::Widgets)
+target_link_libraries(synfilesharingDemo
+    PRIVATE
+    Qt${QT_VERSION_MAJOR}::Widgets
+    synfilesharing
+    sdbus-c++
+    systemd
+)
+
+target_include_directories(synfilesharingDemo
+    PRIVATE synfilesharing
+)
 
 # Qt for iOS sets MACOSX_BUNDLE_GUI_IDENTIFIER automatically since Qt 6.1.
 # If you are developing for iOS or macOS you should consider setting an
