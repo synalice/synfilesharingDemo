@@ -33,8 +33,12 @@ int main(int argc, char *argv[])
             files.push_back(QString::fromStdString(str));
         }
 
-        r.setFiles(files);
-        r.show();
+        if (!files.empty()) {
+            r.setFiles(files);
+            r.show();
+        } else {
+            exit(1);
+        }
     } else {
         w.show();
     }
