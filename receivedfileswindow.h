@@ -12,8 +12,10 @@ class ReceivedFiles : public QDialog
     Q_OBJECT
 
 public:
-    explicit ReceivedFiles(QWidget *parent = nullptr);
+    ReceivedFiles(QWidget *parent = nullptr);
     ~ReceivedFiles();
+
+    void setFiles(QStringList files);
 
 private slots:
     void on_closeButton_clicked();

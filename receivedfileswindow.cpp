@@ -13,6 +13,10 @@ ReceivedFiles::~ReceivedFiles()
     delete ui;
 }
 
+void ReceivedFiles::setFiles(QStringList files) {
+    ui->receivedFiles->addItems(files);
+}
+
 void ReceivedFiles::on_closeButton_clicked()
 {
     this->close();

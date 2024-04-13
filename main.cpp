@@ -3,30 +3,41 @@
 
 #include <QApplication>
 
-#include <iostream>
-
 #include <synfilesharing/synfilesharing.h>
-
 
 int main(int argc, char *argv[])
 {
     std::vector<std::string> allowedFileExtensions = {".txt", ".md",};
+
     auto receivedFiles = std::make_shared<std::vector<std::string>>();
-
-    std::unique_ptr<synfs::IServer> server = synfs::makeServer()
-        .setAllowedFileExtensions(allowedFileExtensions)
-        .setExecFlag(synfs::constants::DEFAULT_EXEC_FLAG)
-        .saveResultsTo(receivedFiles)
-        .build();
-
-    server->run(argc, argv);
+    bool runViaDBus = false;
+    
+    try {
+        std::unique_ptr<synfs::IServer> server = synfs::makeServer()
+            .setAllowedFileExtensions(allowedFileExtensions)
+            .saveRunViaDBusTo(runViaDBus)
+            .saveResultsTo(receivedFiles)
+            .build();
+        server->run(argc, argv);
+    } catch (sdbus::Error e) {}
 
     QApplication a(argc, argv);
-    MainWindow w;
-    w.show();
 
+    MainWindow w;
     ReceivedFiles r;
-    r.show();
+
+    if (runViaDBus) {
+        QList<QString> files;
+
+        for (const std::string &str : *receivedFiles) {
+            files.push_back(QString::fromStdString(str));
+        }
+
+        r.setFiles(files);
+        r.show();
+    } else {
+        w.show();
+    }
 
     return a.exec();
 }

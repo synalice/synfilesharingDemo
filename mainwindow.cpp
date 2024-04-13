@@ -1,11 +1,11 @@
 #include "mainwindow.h"
 #include "./ui_mainwindow.h"
 
-#include <iostream>
 #include <vector>
 
  #include <QFileDialog>
  #include <QListWidget>
+#include <QMessageBox>
 
 #include <synfilesharing/synfilesharing.h>
 
@@ -14,6 +14,8 @@ MainWindow::MainWindow(QWidget *parent)
     , ui(new Ui::MainWindow)
 {
     ui->setupUi(this);
+
+    ui->sendFilesButton->setDisabled(true);
 
     // Добавление файлов
     connect(
@@ -37,10 +39,22 @@ MainWindow::MainWindow(QWidget *parent)
 void MainWindow::selectFiles() {
     QList<QString> fileNames = QFileDialog::getOpenFileNames();
     ui->selectedFiles->addItems(fileNames);
+
+    if (ui->selectedFiles->count() <= 0) {
+        ui->sendFilesButton->setDisabled(true);
+    } else {
+        ui->sendFilesButton->setDisabled(false);
+    }
 }
 
 void MainWindow::deleteClickedItem(QListWidgetItem *item) {
     ui->selectedFiles->takeItem(ui->selectedFiles->row(item));
+
+    if (ui->selectedFiles->count() <= 0) {
+        ui->sendFilesButton->setDisabled(true);
+    } else {
+        ui->sendFilesButton->setDisabled(false);
+    }
 }
 
 void MainWindow::sendFiles() {
@@ -51,7 +65,18 @@ void MainWindow::sendFiles() {
         files.push_back(ui->selectedFiles->item(i) ->text().toStdString());
     }
 
-    client->sendFiles(files);
+    try {
+        client->sendFiles(files);
+    } catch (sdbus::Error e) {
+        QMessageBox *errMsg = new QMessageBox(
+            QMessageBox::Critical,
+            "Ошибка!",
+            QString::fromStdString(e.getMessage())
+        );
+        errMsg->setPalette(this->palette());
+        errMsg->addButton(QMessageBox::Close);
+        errMsg->show();
+    }
 }
 
 MainWindow::~MainWindow()
