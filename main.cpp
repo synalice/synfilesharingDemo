@@ -1,5 +1,5 @@
 #include "mainwindow.h"
-#include "receivedfiles.h"
+#include "receivedfileswindow.h"
 
 #include <QApplication>
 

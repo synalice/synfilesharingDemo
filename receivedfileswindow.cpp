@@ -1,5 +1,5 @@
-#include "receivedfiles.h"
-#include "ui_receivedfiles.h"
+#include "receivedfileswindow.h"
+#include "ui_receivedfileswindow.h"
 
 ReceivedFiles::ReceivedFiles(QWidget *parent)
     : QDialog(parent)

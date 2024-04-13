@@ -1,5 +1,5 @@
-#ifndef RECEIVEDFILES_H
-#define RECEIVEDFILES_H
+#ifndef RECEIVEDFILESWINDOW_H
+#define RECEIVEDFILESWINDOW_H
 
 #include <QDialog>
 
@@ -22,4 +22,4 @@ private:
     Ui::ReceivedFiles *ui;
 };
 
-#endif // RECEIVEDFILES_H
+#endif // RECEIVEDFILESWINDOW_H
