@@ -12,3 +12,9 @@ ReceivedFiles::~ReceivedFiles()
 {
     delete ui;
 }
+
+void ReceivedFiles::on_closeButton_clicked()
+{
+    this->close();
+}
+

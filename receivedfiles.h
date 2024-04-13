@@ -15,6 +15,9 @@ public:
     explicit ReceivedFiles(QWidget *parent = nullptr);
     ~ReceivedFiles();
 
+private slots:
+    void on_closeButton_clicked();
+
 private:
     Ui::ReceivedFiles *ui;
 };

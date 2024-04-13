@@ -1,4 +1,5 @@
 #include "mainwindow.h"
+#include "receivedfiles.h"
 
 #include <QApplication>
 
@@ -23,5 +24,9 @@ int main(int argc, char *argv[])
     QApplication a(argc, argv);
     MainWindow w;
     w.show();
+
+    ReceivedFiles r;
+    r.show();
+
     return a.exec();
 }
