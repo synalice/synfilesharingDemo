@@ -18,6 +18,7 @@ public:
     MainWindow(QWidget *parent = nullptr);
     void selectFiles();
     void deleteClickedItem(QListWidgetItem *item);
+    void sendFiles();
     ~MainWindow();
 
 private:
