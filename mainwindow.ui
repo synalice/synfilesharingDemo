@@ -6,8 +6,8 @@
    <rect>
     <x>0</x>
     <y>0</y>
-    <width>448</width>
-    <height>371</height>
+    <width>634</width>
+    <height>451</height>
    </rect>
   </property>
   <property name="palette">
@@ -509,6 +509,29 @@
      </layout>
     </item>
     <item>
+     <spacer name="verticalSpacer">
+      <property name="orientation">
+       <enum>Qt::Vertical</enum>
+      </property>
+      <property name="sizeType">
+       <enum>QSizePolicy::Fixed</enum>
+      </property>
+      <property name="sizeHint" stdset="0">
+       <size>
+        <width>0</width>
+        <height>20</height>
+       </size>
+      </property>
+     </spacer>
+    </item>
+    <item>
+     <widget class="QLabel" name="label_2">
+      <property name="text">
+       <string>Для удаления выбранного элемента кликните по нему дважды.</string>
+      </property>
+     </widget>
+    </item>
+    <item>
      <widget class="QScrollArea" name="scrollArea_2">
       <property name="widgetResizable">
        <bool>true</bool>
@@ -518,8 +541,8 @@
         <rect>
          <x>0</x>
          <y>0</y>
-         <width>428</width>
-         <height>133</height>
+         <width>614</width>
+         <height>184</height>
         </rect>
        </property>
        <layout class="QVBoxLayout" name="verticalLayout_4">
@@ -536,7 +559,7 @@
          <number>0</number>
         </property>
         <item>
-         <widget class="QListView" name="selectedFiles"/>
+         <widget class="QListWidget" name="selectedFiles"/>
         </item>
        </layout>
       </widget>
@@ -556,8 +579,8 @@
             <rect>
              <x>0</x>
              <y>0</y>
-             <width>424</width>
-             <height>98</height>
+             <width>610</width>
+             <height>78</height>
             </rect>
            </property>
            <layout class="QVBoxLayout" name="verticalLayout_3">
@@ -596,7 +619,7 @@
     <rect>
      <x>0</x>
      <y>0</y>
-     <width>448</width>
+     <width>634</width>
      <height>22</height>
     </rect>
    </property>
