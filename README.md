@@ -16,7 +16,7 @@
 
 ### Установка фреймворка
 
-1. Установить `.deb` пакет фреймворка synfilesharing (ссылка на скачивание).
+1. Установить `.deb` пакет фреймворка synfilesharing [(ссылка на скачивание)](https://github.com/synalice/synfilesharing/releases/tag/latest).
 2. ```shell
    mkdir build
    cd build
