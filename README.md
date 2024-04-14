@@ -17,13 +17,19 @@
 ### Установка фреймворка
 
 1. Установить `.deb` пакет фреймворка synfilesharing [(ссылка на скачивание)](https://github.com/synalice/synfilesharing/releases/tag/latest).
-2. ```shell
+   ```shell
+   sudo dpkg -i synfilesharing-dev_1.0.0_amd64.deb
+   ```
+   
+2. Клонировать репозиторий и создать `build/` директорию. 
+   ```shell
+   git clone https://github.com/synalice/synfilesharingDemo
+   cd synfilesharingDemo
    mkdir build
    cd build
    ```
-
-
-3. Осторожно! У вас скорее всего будет другая версия. Проверьте.
+   
+3. Скомпилировать код. Осторожно! У вас скорее всего будет другая версия Qt, проверьте.
     ```shell
     cmake -DCMAKE_PREFIX_PATH=~/Qt/6.7.0/gcc_64 ..
     cmake --build .
